@@ -1,13 +1,12 @@
 const webpack = require('webpack')
 const path = require('path')
-const config = require('./config')
 const CleanPlugin = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: {
     vendor: ['react', 'react-dom'],
-    bundle: './src/index.js'
+    index: './src/index.js'
   },
   output: {
     filename: '[name].js',
@@ -15,33 +14,32 @@ module.exports = {
     publicPath: '/'
   },
   module: {
-    loaders: [{
+    loaders: [
+      {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader?presets[]=es2015&presets[]=react'
-    }]
+    },
+    {
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract({
+        fullbackLoader: 'style-loader',
+        loader: ['css-loader?modules&localIdentName=[name]--[local]--[hash:base64:5]']
+      })
+    },
+    {
+      test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=50000&name=[path][name].[ext]'
+    }
+  ]
   },
   plugins: [
     new CleanPlugin(['dist'], {
       root: path.join(__dirname),
       verbose: true
     }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'static', 'index_default.html'),
-      title: config.site.title,
-      keywords: config.site.keywords,
-      description: config.site.description,
-      header: config.site.header
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: '"production"'
-        }
+    new ExtractTextPlugin({
+      filename: 'static/[name].css',
+      allChunks: true
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

@@ -1,6 +1,10 @@
 {
   "name": "react-html-editor",
-  "author": "wolyshaw",
+  "author": {
+    "name": "wolyshaw",
+    "email": "shaw@xwlong.com",
+    "url": "https://xwlong.com"
+  },
   "main": "dist/index.js",
   "license": "ISC",
   "version": "1.0.0",
@@ -11,7 +15,15 @@
   "description": "an react html editor",
   "scripts": {
     "dev": "webpack --config ./webpack.config.dev.js && node server.js",
-    "build": "webpack"
+    "build": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wolyshaw/react-html-editor"
+  },
+  "bugs": {
+    "url": "https://github.com/wolyshaw/react-html-editor/issues",
+    "email": "shaw@xwlong.com"
   },
   "dependencies": {
     "react": "^15.4.2",
@@ -24,8 +36,12 @@
     "babel-preset-react": "^6.23.0",
     "clean-webpack-plugin": "^0.1.15",
     "compression": "^1.6.2",
+    "css-loader": "^0.26.1",
     "express": "^4.14.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.28.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.17.0"

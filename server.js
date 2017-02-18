@@ -18,12 +18,9 @@ app.use(webpackDevMiddleware(compiler, {
 }))
 
 app.use(webpackHotMiddleware(compiler))
-if (config.debug) {
-}else{
-  app.use(express.static('dist'))
-}
+app.use(express.static('dev'))
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, (config.debug ? 'dev' : 'dist'), 'index.html'))
+  res.sendFile(path.join(__dirname, 'dev', 'index.html'))
 })
 var port = process.env.port || config.port
 app.listen(port, function() {
