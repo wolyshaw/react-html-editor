@@ -26,7 +26,7 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fullbackLoader: 'style-loader',
-          loader: ['css-loader?modules&localIdentName=[name]--[local]--[hash:base64:5]']
+          loader: ['css-loader']
         })
       },
       {

@@ -5,13 +5,15 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: {
-    vendor: ['react', 'react-dom'],
     index: './src/index.js'
   },
   output: {
     filename: '[name].js',
     path: path.resolve('./dist'),
-    publicPath: '/'
+    publicPath: '/',
+    library: 'Editor',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     loaders: [
@@ -24,7 +26,7 @@ module.exports = {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract({
         fullbackLoader: 'style-loader',
-        loader: ['css-loader?modules&localIdentName=[name]--[local]--[hash:base64:5]']
+        loader: ['css-loader']
       })
     },
     {
@@ -38,12 +40,8 @@ module.exports = {
       verbose: true
     }),
     new ExtractTextPlugin({
-      filename: 'static/[name].css',
+      filename: 'static/editor.css',
       allChunks: true
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity
     })
   ]
 }

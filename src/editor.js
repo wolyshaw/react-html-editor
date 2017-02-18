@@ -1,6 +1,6 @@
 import React, {Component, propTypes, defaultProps} from 'react'
 import {render} from 'react-dom'
-import styles from './static/editor.css'
+import './static/editor.css'
 
 let content
 
@@ -11,17 +11,18 @@ class Editor extends Component {
   }
 
   render() {
+    let styles = this.props.classObject
     return (
-      <div className={styles.wrap}>
-        <div className={styles.ctrl}>
-          <span draggable="true" onClick={() => document.execCommand('bold')} className={styles.iconfont}>&#xe61d;</span>
-          <span draggable="true" onClick={() => document.execCommand('italic')} className={styles.iconfont}>&#xe71a;</span>
-          <span draggable="true" onClick={() => document.execCommand('insertUnorderedList')} className={styles.iconfont}>&#xe696;</span>
-          <span draggable="true" onClick={() => document.execCommand('insertOrderedList')} className={styles.iconfont}>&#xe6c1;</span>
-          <span draggable="true" onClick={() => document.execCommand('bold')} className={styles.iconfont}>&#xe62d;</span>
-          <span draggable="true" onClick={() => document.execCommand('undo')} className={styles.iconfont}>&#xe62c;</span>
+      <div className={styles.wrap || 'wrap'}>
+        <div className={styles.ctrl || 'ctrl'}>
+          <span draggable="true" onClick={() => document.execCommand('bold')} className={styles.iconfont || 'iconfont'}>&#xe61d;</span>
+          <span draggable="true" onClick={() => document.execCommand('italic')} className={styles.iconfont || 'iconfont'}>&#xe71a;</span>
+          <span draggable="true" onClick={() => document.execCommand('insertUnorderedList')} className={styles.iconfont || 'iconfont'}>&#xe696;</span>
+          <span draggable="true" onClick={() => document.execCommand('insertOrderedList')} className={styles.iconfont || 'iconfont'}>&#xe6c1;</span>
+          <span draggable="true" onClick={() => document.execCommand('bold')} className={styles.iconfont || 'iconfont'}>&#xe62d;</span>
+          <span draggable="true" onClick={() => document.execCommand('undo')} className={styles.iconfont || 'iconfont'}>&#xe62c;</span>
         </div>
-        <div className={styles.content}
+        <div className={styles.content || 'content'}
           contentEditable="true"
           spellCheck="false"
           ref={n => content = n}
@@ -34,11 +35,13 @@ class Editor extends Component {
 }
 
 Editor.defaultProps = {
-  placeholder: 'content'
+  placeholder: 'content',
+  classObject: {}
 }
 
 Editor.propTypes = {
-  placeholder: React.PropTypes.string
+  placeholder: React.PropTypes.string,
+  classObject: React.PropTypes.object.require
 }
 
 export default Editor

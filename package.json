@@ -5,12 +5,16 @@
     "email": "shaw@xwlong.com",
     "url": "https://xwlong.com"
   },
-  "main": "dist/index.js",
+  "homepage": "https://github.com/wolyshaw/react-html-editor",
+  "main": "dist/index",
   "license": "ISC",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "react",
     "editor"
+  ],
+  "files": [
+    "dist"
   ],
   "description": "an react html editor",
   "scripts": {
