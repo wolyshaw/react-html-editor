@@ -7,7 +7,13 @@ let content
 class Editor extends Component {
   constructor(props) {
     super(props)
-    this.content = content ? content.innerHTML : ''
+    this.content = content ? encodeURIComponent(content.innerHTML.trim()) : ''
+    this.setImage = this.setImage
+  }
+
+  setImage(image) {
+    content.focus()
+    document.execCommand('insertImage', true, image)
   }
 
   render() {
@@ -19,7 +25,7 @@ class Editor extends Component {
           <span draggable="true" onClick={() => document.execCommand('italic')} className={styles.iconfont || 'iconfont'}>&#xe71a;</span>
           <span draggable="true" onClick={() => document.execCommand('insertUnorderedList')} className={styles.iconfont || 'iconfont'}>&#xe696;</span>
           <span draggable="true" onClick={() => document.execCommand('insertOrderedList')} className={styles.iconfont || 'iconfont'}>&#xe6c1;</span>
-          <span draggable="true" onClick={() => document.execCommand('bold')} className={styles.iconfont || 'iconfont'}>&#xe62d;</span>
+          <span draggable="true" onClick={this.props.setImage} className={styles.iconfont || 'iconfont'}>&#xe62d;</span>
           <span draggable="true" onClick={() => document.execCommand('undo')} className={styles.iconfont || 'iconfont'}>&#xe62c;</span>
         </div>
         <div className={styles.content || 'content'}
@@ -41,7 +47,7 @@ Editor.defaultProps = {
 
 Editor.propTypes = {
   placeholder: React.PropTypes.string,
-  classObject: React.PropTypes.object.require
+  setImage: React.PropTypes.func.isRequired
 }
 
 export default Editor

@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const publicPath = 'http://localhost:' + config.port + '/'
 const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true'
 module.exports = {
-  entry: ['./src/index.js', hotMiddlewareScript],
+  entry: ['./src/development.js', hotMiddlewareScript],
   output: {
     filename: 'index.min.js',
     path: path.resolve('./dev'),
@@ -46,6 +46,6 @@ module.exports = {
       keywords: config.site.keywords,
       description: config.site.description,
       header: config.site.header
-    }),
+    })
   ]
 }

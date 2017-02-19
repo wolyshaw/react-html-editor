@@ -8,7 +8,7 @@
   "homepage": "https://github.com/wolyshaw/react-html-editor",
   "main": "dist/index",
   "license": "ISC",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": [
     "react",
     "editor"

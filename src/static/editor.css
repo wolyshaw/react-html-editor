@@ -3,6 +3,8 @@
   margin: auto;
   border: 1px solid #e8edf2;
   border-radius: 5px;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 .wrap > div{
   padding: 10px;
@@ -23,10 +25,23 @@
 .wrap > .content{
   outline: none;
   min-height: 300px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.wrap > .content img{
+  max-width: 100%;
+  height: auto;
+}
+.wrap > .content ul,
+.wrap > .content ol{
+  margin: 15px auto;
+  padding: 0;
+  padding-left: 40px;
 }
 [contentEditable=true]:empty:not(:focus):before{
   content: attr(data-placeholder);
   color: rgba(0, 0, 0, .3);
+  -webkit-user-select: auto;
 }
 @font-face {
   font-family: 'iconfont';
