@@ -11,7 +11,7 @@ import EditorStyles from 'react-html-editor'
 <Editor classObject={EditorStyles}/>
 ```
 
-![demo 地址,(可能并不是最新代码)](http://shaw.click/react-html-editor/)
+[demo 地址,(可能并不是最新代码)](http://shaw.click/react-html-editor/)
 
 
 开发：
