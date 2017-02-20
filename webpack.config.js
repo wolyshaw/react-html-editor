@@ -12,9 +12,13 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve('./dist'),
     publicPath: '/',
-    library: 'Editor',
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    // library: 'Editor',
+    libraryTarget: 'umd'
+    // umdNamedDefine: true
+  },
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM'
   },
   module: {
     loaders: [

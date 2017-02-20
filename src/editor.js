@@ -7,8 +7,12 @@ let content
 class Editor extends Component {
   constructor(props) {
     super(props)
-    this.content = content ? encodeURIComponent(content.innerHTML.trim()) : ''
+    this.getContent = this.getContent
     this.setImage = this.setImage
+  }
+
+  getContent() {
+    return content ? encodeURIComponent(content.innerHTML.trim()) : ''
   }
 
   setImage(image) {
